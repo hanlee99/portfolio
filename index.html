@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>백엔드 개발자 포트폴리오 - 이랑</title>
@@ -328,10 +329,21 @@
     </style>
 </head>
 <body>
-<header>
+<header class="header">
     <h1>이한 (Lee Han)</h1>
     <p class="subtitle">Backend Developer</p>
-    <p class="header-tagline">Spring Boot 기반의 확장 가능한 웹 서비스를 설계하고 구현합니다</p>
+
+    <div class="contact">
+        📞 010-3845-9075 &nbsp;|&nbsp;
+        📧 cahannon538@naver.com <br>
+        🔗 GitHub: <a href="https://github.com/hanlee99" target="_blank">github.com/your-github</a> &nbsp;|&nbsp;
+        🔗 project: <a href="https://github.com/hanlee99/moviesite" target="_blank">github.com/your-github</a> &nbsp;|&nbsp;
+        🔗 Portfolio: <a href="https://hanlee99.github.io/portfolio/" target="_blank">your-portfolio-url</a>
+    </div>
+
+    <p class="header-tagline">
+        Spring Boot 기반의 확장 가능한 웹 서비스를 설계하고 구현합니다
+    </p>
 </header>
 
 <div class="container">
@@ -339,6 +351,7 @@
     <div class="section">
         <h2>👨‍💻 About Me</h2>
         <div class="profile-section">
+             
             <div class="profile-info">
                 <p>안녕하세요. 백엔드 개발자 이한입니다.</p>
                 <p style="margin-top: 20px;">
@@ -420,7 +433,7 @@
         <h2>✨ 주요 기능</h2>
         <ul class="feature-list">
             <li>일일/주간 박스오피스 실시간 조회 <span class="status-badge status-complete">구현완료</span></li>
-            <li>현재 상영작 정보 제공 (페이징 처리) <span class="status-badge status-complete">구현완료</span></li>
+            <li>현재 상영/예정작 정보 제공 (페이징 처리) <span class="status-badge status-complete">구현완료</span></li>
             <li>개봉 예정작 일정 관리 <span class="status-badge status-complete">구현완료</span></li>
             <li>위치 기반 극장 검색 (EPSG5174 좌표계 변환) <span class="status-badge status-refactoring">리팩토링중</span></li>
             <li>영화 제목 검색 (DB 내부 검색 + KMDB API 검색)</li>
@@ -439,9 +452,12 @@
             </p>
             <img src="erd-diagram.png" alt="ERD Diagram" class="erd-image" 
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; padding: 40px; background: white; border-radius: 8px;">
-                <p style="color: #718096;">ERD 이미지: erd-diagram.png 파일을 같은 폴더에 추가하세요</p>
-            </div>
+            <div style="padding: 40px; background: white; border-radius: 8px;">
+            <p style="color: #718096; margin-bottom: 10px;">ERD 이미지</p>
+            <img src="./erdTable.png" alt="ERD Diagram"
+                 style="max-width: 100%; border: 1px solid #e2e8f0; border-radius: 8px;">
+</div>
+
         </div>
 
         <h3>📊 주요 테이블 구조</h3>
@@ -491,7 +507,7 @@
                 <h3>Brand</h3>
                 <p><strong>영화관 브랜드</strong></p>
                 <p style="font-size: 0.9em; color: #718096; margin-top: 8px;">
-                    • CGV, 롯데시네마 등<br>
+                    • CGV, 롯데시네마, 메가박스<br>
                     • 1:N 관계 (Brand → Cinema)
                 </p>
             </div>
@@ -507,9 +523,9 @@
 
             <div class="implementation-item">
                 <h3>SpecialtyTheater</h3>
-                <p><strong>특수 상영관 정보</strong></p>
+                <p><strong>특별관 정보</strong></p>
                 <p style="font-size: 0.9em; color: #718096; margin-top: 8px;">
-                    • IMAX, 4DX 등 특수관<br>
+                    • IMAX, 4DX 등 특별관<br>
                     • N:M 관계 (Cinema ↔ Specialty)
                 </p>
             </div>
@@ -517,7 +533,7 @@
 
         <div class="highlight-box" style="margin-top: 25px;">
             <strong>🎯 설계 포인트:</strong><br>
-            • 정규화를 통한 데이터 중복 최소화<br>
+            • 정규화를 통한 데이터 중복 최소화(영화인,특별관)<br>
             • 외래키 제약조건으로 참조 무결성 보장<br>
             • 인덱스 최적화로 검색 성능 향상<br>
             • JPA 연관관계 매핑으로 객체지향적 설계
@@ -596,34 +612,36 @@
         <div class="code-block">
 // GET /movie/box-office/daily
 {
-  "boxOfficeResult": {
-    "boxofficeType": "일별 박스오피스",
-    "showRange": "20250113",
-    "dailyBoxOfficeList": [
-      {
-        "rank": "1",
-        "movieNm": "노스페라투",
-        "openDt": "2025-01-08",
-        "audiAcc": "234567",
-        "movieInfo": {
-          "title": "노스페라투",
-          "posterUrl": "https://...",
-          "rating": "청소년관람불가"
-        }
-      }
+    "boxOfficeType": "일별 박스오피스",
+    "showRange": "2025-11-13",
+    "movies": [
+        {
+            "rank": 1,
+            "movieCd": "20258383",
+            "docId": "F65015",
+            "title": "나우 유 씨 미 3",
+            "poster": "http://file.koreafilm.or.kr/thm/02/99/19/18/tn_DPF032068.jpg",
+            "genre": "액션,범죄",
+            "openDt": "2025-11-12",
+            "salesAmt": 629835950,
+            "salesAcc": 1398047490,
+            "audiCnt": 68496,
+            "audiAcc": 151446
+        },
+        ...
     ]
-  }
 }
 
 // GET /movie/now-playing?page=0&size=20
 [
   {
-    "title": "노스페라투",
-    "openDt": "2025-01-08",
-    "posterUrl": "https://...",
-    "rating": "청소년관람불가",
-    "genre": "공포"
-  },
+        "docId": "F65015",
+        "title": "나우 유 씨 미 3",
+        "genre": "액션,범죄",
+        "rating": "12세이상관람가",
+        "repRlsDate": "20251112",
+        "poster": "http://file.koreafilm.or.kr/thm/02/99/19/18/tn_DPF032068.jpg"
+    },
   ...
 ]
         </div>
@@ -634,68 +652,22 @@
         <h2>📁 프로젝트 구조</h2>
         
         <div class="code-block">
-demo/
-┣ src/
-┃ ┣ main/
-┃ ┃ ┣ java/com/example/demo/
-┃ ┃ ┃ ┣ config/               → 설정 클래스
-┃ ┃ ┃ ┃ ┗ RestTemplateConfig
-┃ ┃ ┃ ┣ controller/           → REST API 및 페이지 컨트롤러
-┃ ┃ ┃ ┃ ┣ HomeController      (Thymeleaf 렌더링)
-┃ ┃ ┃ ┃ ┣ MovieController     (REST API)
-┃ ┃ ┃ ┃ ┗ CinemaController
-┃ ┃ ┃ ┣ service/              → 비즈니스 로직
-┃ ┃ ┃ ┃ ┣ MovieService        (영화 정보 조회)
-┃ ┃ ┃ ┃ ┣ MovieSyncService    (외부 API 동기화)
-┃ ┃ ┃ ┃ ┗ CinemaService       (극장 정보)
-┃ ┃ ┃ ┣ repository/           → JPA 리포지토리
-┃ ┃ ┃ ┃ ┣ MovieRepository
-┃ ┃ ┃ ┃ ┣ PersonRepository
-┃ ┃ ┃ ┃ ┗ CinemaRepository
-┃ ┃ ┃ ┣ entity/               → JPA 엔티티
-┃ ┃ ┃ ┃ ┣ MovieEntity         (영화)
-┃ ┃ ┃ ┃ ┣ PersonEntity        (영화인)
-┃ ┃ ┃ ┃ ┣ MoviePersonEntity   (영화-영화인 관계)
-┃ ┃ ┃ ┃ ┣ Cinema              (극장)
-┃ ┃ ┃ ┃ ┣ Brand               (브랜드)
-┃ ┃ ┃ ┃ ┣ Region              (지역)
-┃ ┃ ┃ ┃ ┗ SpecialtyTheater    (특수관)
-┃ ┃ ┃ ┣ dto/                  → 데이터 전송 객체
-┃ ┃ ┃ ┃ ┣ movie/
-┃ ┃ ┃ ┃ ┃ ┣ MovieResponseDto
-┃ ┃ ┃ ┃ ┃ ┣ boxoffice/        (박스오피스 DTO)
-┃ ┃ ┃ ┃ ┃ ┗ kmdb/             (KMDB API DTO)
-┃ ┃ ┃ ┃ ┗ cinema/             (영화관 DTO)
-┃ ┃ ┃ ┣ exception/            → 커스텀 예외 처리
-┃ ┃ ┃ ┃ ┣ GlobalExceptionHandler
-┃ ┃ ┃ ┃ ┣ BusinessException
-┃ ┃ ┃ ┃ ┣ ExternalApiException
-┃ ┃ ┃ ┃ ┣ KobisApiException
-┃ ┃ ┃ ┃ ┣ KmdbApiException
-┃ ┃ ┃ ┃ ┣ MovieNotFoundException
-┃ ┃ ┃ ┃ ┣ BadRequestException
-┃ ┃ ┃ ┃ ┗ ErrorResponse
-┃ ┃ ┃ ┣ external/             → 외부 API 연동
-┃ ┃ ┃ ┃ ┣ adapter/            (API 어댑터 패턴)
-┃ ┃ ┃ ┃ ┣ kobis/              (KOBIS API 클라이언트)
-┃ ┃ ┃ ┃ ┗ kmdb/               (KMDB API 클라이언트)
-┃ ┃ ┃ ┣ mapper/               → DTO-Entity 변환
-┃ ┃ ┃ ┣ scheduler/            → 스케줄러
-┃ ┃ ┃ ┃ ┗ BoxOfficeScheduler  (자동 데이터 갱신)
-┃ ┃ ┃ ┗ init/                 → 초기화
-┃ ┃ ┃   ┗ CinemaCsvInitializer (CSV 데이터 로드)
-┃ ┃ ┗ resources/
-┃ ┃   ┣ templates/            → Thymeleaf 템플릿
-┃ ┃   ┃ ┗ home.html
-┃ ┃   ┣ static/               → 정적 리소스
-┃ ┃   ┃ ┣ css/
-┃ ┃   ┃ ┣ js/
-┃ ┃   ┃ ┗ images/
-┃ ┃   ┣ data/                 → CSV 데이터 파일
-┃ ┃   ┃ ┗ cinemas.csv
-┃ ┃   ┣ application.yml       → 설정 파일
-┃ ┃   ┗ logback-spring.xml    → 로깅 설정
-┗ build.gradle                → 빌드 스크립트
+src/main/java/com/moviesite/
+├── controller/         # REST API 엔드포인트
+├── service/            # 비즈니스 로직
+├── repository/         # JPA Repository
+├── entity/             # JPA Entity (Movie, Theater, Review 등)
+├── dto/                # 요청/응답 DTO
+├── exception/          # 커스텀 예외 (MovieNotFoundException 등)
+│   └── handler/        # GlobalExceptionHandler
+├── config/             # Spring 설정 (WebConfig, SecurityConfig)
+└── scheduler/          # @Scheduled 배치 작업
+
+src/main/resources/
+├── data                # csv 파일
+├── static              # css/js/images
+└── templates/          # Thymeleaf 템플릿
+    └── fragments       # 시멘틱 태그
         </div>
 
         <div class="highlight-box">
@@ -716,7 +688,7 @@ demo/
                 <h3>🔗 외부 API 통합</h3>
                 <p>KOBIS, KMDB 등 3개 외부 API를 통합하여 데이터 일관성 확보</p>
                 <ul style="margin-top: 10px; font-size: 0.9em; color: #718096;">
-                    <li>RestTemplate 기반 API 클라이언트</li>
+                    <li>WebClient 기반 API 클라이언트</li>
                     <li>Adapter 패턴으로 API 별 구현 분리</li>
                     <li>응답 데이터 검증 및 변환</li>
                 </ul>
@@ -737,7 +709,7 @@ demo/
                 <p>WGS84 ↔ EPSG5174 좌표계 변환 로직 자체 구현</p>
                 <ul style="margin-top: 10px; font-size: 0.9em; color: #718096;">
                     <li>중부원점 TM 좌표계 변환</li>
-                    <li>위치 기반 거리 계산</li>
+                    <li>위치 기반 거리 계산(PostGis이용예정)</li>
                     <li>주변 극장 검색 최적화</li>
                 </ul>
             </div>
@@ -756,9 +728,9 @@ demo/
                 <h3>🔄 데이터 동기화</h3>
                 <p>외부 API 데이터 자동 수집 및 DB 저장</p>
                 <ul style="margin-top: 10px; font-size: 0.9em; color: #718096;">
-                    <li>@Scheduled 기반 주기적 갱신</li>
-                    <li>중복 방지 로직</li>
-                    <li>트랜잭션 관리</li>
+                    <li>Spring @Scheduled를 이용한 일일 박스오피스 데이터 자동 갱신</li>
+                    <li>영화 ID 기반 중복 체크 및 업데이트/삽입 로직</li>
+                    <li>@Transactional을 통한 데이터 정합성 보장</li>
                 </ul>
             </div>
 
