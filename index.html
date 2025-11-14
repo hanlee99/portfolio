@@ -326,6 +326,49 @@
             margin-bottom: 10px;
             font-size: 1.1em;
         }
+        .screenshot {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid #dee2e6;
+    transition: transform 0.3s ease;
+}
+
+.screenshot:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .screenshot {
+        max-width: 100% !important;
+    }
+}
+/* 아키텍처 이미지 */
+#architecture img {
+    transition: transform 0.3s ease;
+}
+
+#architecture img:hover {
+    transform: scale(1.02);
+}
+
+/* 계층 카드 호버 */
+div[style*="border-left: 4px solid"] {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+div[style*="border-left: 4px solid"]:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    div[style*="grid-template-columns: repeat(2, 1fr)"] {
+        grid-template-columns: 1fr !important;
+    }
+}
     </style>
 </head>
 <body>
@@ -336,9 +379,9 @@
     <div class="contact">
         📞 010-3845-9075 &nbsp;|&nbsp;
         📧 cahannon538@naver.com <br>
-        🔗 GitHub: <a href="https://github.com/hanlee99" target="_blank">github.com/your-github</a> &nbsp;|&nbsp;
-        🔗 project: <a href="https://github.com/hanlee99/moviesite" target="_blank">github.com/your-github</a> &nbsp;|&nbsp;
-        🔗 Portfolio: <a href="https://hanlee99.github.io/portfolio/" target="_blank">your-portfolio-url</a>
+        🔗 GitHub: <a href="https://github.com/hanlee99" target="_blank">https://github.com/hanlee99</a> &nbsp;|&nbsp;
+        🔗 project: <a href="https://github.com/hanlee99/moviesite" target="_blank">https://github.com/hanlee99/moviesite</a> &nbsp;|&nbsp;
+        🔗 Portfolio: <a href="https://hanlee99.github.io/portfolio/" target="_blank">https://hanlee99.github.io/portfolio</a>
     </div>
 
     <p class="header-tagline">
@@ -375,28 +418,51 @@
         <h2>🎬 영화 정보 통합 서비스</h2>
 
         <div class="highlight-box">
-            <strong>프로젝트 기간:</strong> 2025.10 ~ 2025.11 (1개월)<br>
-            <strong>개발 인원:</strong> 1인 (풀스택 개발)<br>
-            <strong>주요 역할:</strong> 백엔드 API 설계 및 구현, 외부 API 통합, 데이터베이스 설계<br>
-            <strong>GitHub:</strong> <a href="https://github.com/hanlee99/moviesite" target="_blank" style="color: #667eea;">github.com/hanlee99/moviesite</a>
+            <strong>개발 기간:</strong> 2025.10 ~ 2025.11 (1개월) | 
+            <strong>개발 인원:</strong> 1인<br>
+            <strong>핵심 역량:</strong> 백엔드 API 설계, 외부 API 통합, 예외 처리 체계화
         </div>
 
         <p style="margin: 20px 0; line-height: 1.9; font-size: 1.05em;">
-            KOBIS(영화진흥위원회)와 KMDB(한국영화데이터베이스) API를 통합하여
-            실시간 박스오피스 정보와 영화 상세 정보를 제공하는 웹 서비스입니다.
-            RESTful API 설계 원칙을 준수하고, 체계적인 예외 처리와 로깅 시스템을 구축했습니다.
-            좌표계 변환 로직을 직접 구현하여 정확한 위치 기반 검색 기능을 제공합니다.
+            <strong>KOBIS(영화진흥위원회)</strong>와 <strong>KMDB(한국영화데이터베이스)</strong> API를 통합하여
+            실시간 박스오피스와 영화 상세 정보를 제공하는 웹 서비스입니다.
+        </p>
+    
+        <p style="margin: 20px 0; line-height: 1.9; font-size: 1.05em;">
+            <strong>Adapter 패턴</strong>으로 외부 API 의존성을 격리하고,
+            <strong>Spring Cache</strong>로 불필요한 API 호출을 최소화했으며,
+            체계적인 예외 처리로 안정성을 확보했습니다.
         </p>
 
         <div class="links">
-            <a href="https://github.com/hanlee99/moviesite" class="btn" target="_blank">
-                📦 GitHub Repository
-            </a>
             <a href="#api-spec" class="btn btn-secondary">
-                📋 API 명세 보기
+                📋 API 명세서
+            </a>
+            <a href="#architecture" class="btn btn-secondary">
+                🏗️ 시스템 아키텍처
             </a>
         </div>
     </div>
+
+    <!-- 시연 스크린샷 -->
+<div class="section" id="demo">
+    <h2>🖼️ 주요 화면</h2>
+
+    <!-- 메인 화면 -->
+    <div style="margin: 20px 0;">
+        <h3 style="color: #495057; margin-bottom: 10px;">메인 페이지</h3>
+        <a href="./home3.png" target="_blank" style="display: block;">
+            <img src="./home3.png" alt="메인 페이지" class="screenshot" 
+                 style="max-width: 900px; margin: 0 auto; display: block; cursor: pointer; transition: opacity 0.3s;"
+                 onmouseover="this.style.opacity='0.8'" 
+                 onmouseout="this.style.opacity='1'">
+        </a>
+        <p style="margin-top: 10px; color: #6c757d; text-align: center;">
+            일일 박스오피스, 현재 상영작, 개봉 예정작을 한눈에
+            <span style="font-size: 0.85em; color: #adb5bd;"> (클릭하면 크게 보기)</span>
+        </p>
+    </div>
+</div>
 
     <!-- 기술 스택 -->
     <div class="section">
@@ -405,7 +471,7 @@
         <h3>Backend</h3>
         <div class="tech-stack">
             <span class="tech-badge">Spring Boot 3.x</span>
-            <span class="tech-badge">Java 17</span>
+            <span class="tech-badge">Java 21</span>
             <span class="tech-badge">JPA/Hibernate</span>
             <span class="tech-badge">PostgreSQL</span>
             <span class="tech-badge">Gradle</span>
@@ -450,201 +516,122 @@
             <p style="margin-bottom: 20px; color: #4a5568;">
                 <strong>총 7개 엔티티</strong>로 구성된 관계형 데이터베이스 설계
             </p>
-            <img src="erd-diagram.png" alt="ERD Diagram" class="erd-image" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="padding: 40px; background: white; border-radius: 8px;">
-            <p style="color: #718096; margin-bottom: 10px;">ERD 이미지</p>
             <img src="./erdTable.png" alt="ERD Diagram"
                  style="max-width: 100%; border: 1px solid #e2e8f0; border-radius: 8px;">
-</div>
-
+            </div>
         </div>
 
         <h3>📊 주요 테이블 구조</h3>
         
         <div class="implementation-grid">
             <div class="implementation-item">
-                <h3>MovieEntity</h3>
-                <p><strong>영화 기본 정보</strong></p>
+                <h3>Movie / Person</h3>
                 <p style="font-size: 0.9em; color: #718096; margin-top: 8px;">
-                    • 제목, 개봉일, 장르, 등급<br>
-                    • 줄거리, 포스터, 스틸컷<br>
-                    • KOBIS/KMDB 식별자 관리
+                    • 영화 기본정보 (제목, 개봉일, 장르, 포스터)<br>
+                    • 영화인 정보 (배우, 감독)<br>
+                    • MoviePerson을 통한 다대다 관계 매핑
                 </p>
             </div>
 
             <div class="implementation-item">
-                <h3>PersonEntity</h3>
-                <p><strong>영화인 정보</strong></p>
+                <h3>Cinema / SpecialtyTheater</h3>
                 <p style="font-size: 0.9em; color: #718096; margin-top: 8px;">
-                    • 배우, 감독 등 영화인 정보<br>
-                    • KMDB 고유 ID 관리<br>
-                    • 중복 방지 처리
+                    • 영화관 이름, 주소, 위도/경도<br>
+                    • 특별관 정보(아이맥스, 4dx)<br>
+                    • Cinema와 다대다 관계
                 </p>
-            </div>
-
-            <div class="implementation-item">
-                <h3>MoviePersonEntity</h3>
-                <p><strong>영화-영화인 관계</strong></p>
-                <p style="font-size: 0.9em; color: #718096; margin-top: 8px;">
-                    • 다대다 관계 매핑 테이블<br>
-                    • 역할 구분 (감독/배우)<br>
-                    • 주연/조연 등 세부 역할
-                </p>
-            </div>
-
-            <div class="implementation-item">
-                <h3>Cinema</h3>
-                <p><strong>영화관 정보</strong></p>
-                <p style="font-size: 0.9em; color: #718096; margin-top: 8px;">
-                    • 영화관 이름, 주소<br>
-                    • 위도/경도 좌표<br>
-                    • 브랜드 및 지역 정보
-                </p>
-            </div>
-
-            <div class="implementation-item">
-                <h3>Brand</h3>
-                <p><strong>영화관 브랜드</strong></p>
-                <p style="font-size: 0.9em; color: #718096; margin-top: 8px;">
-                    • CGV, 롯데시네마, 메가박스<br>
-                    • 1:N 관계 (Brand → Cinema)
-                </p>
-            </div>
-
-            <div class="implementation-item">
-                <h3>Region</h3>
-                <p><strong>지역 정보</strong></p>
-                <p style="font-size: 0.9em; color: #718096; margin-top: 8px;">
-                    • 광역/기초 지역 구분<br>
-                    • 1:N 관계 (Region → Cinema)
-                </p>
-            </div>
-
-            <div class="implementation-item">
-                <h3>SpecialtyTheater</h3>
-                <p><strong>특별관 정보</strong></p>
-                <p style="font-size: 0.9em; color: #718096; margin-top: 8px;">
-                    • IMAX, 4DX 등 특별관<br>
-                    • N:M 관계 (Cinema ↔ Specialty)
-                </p>
-            </div>
+            </div>     
         </div>
 
         <div class="highlight-box" style="margin-top: 25px;">
             <strong>🎯 설계 포인트:</strong><br>
-            • 정규화를 통한 데이터 중복 최소화(영화인,특별관)<br>
-            • 외래키 제약조건으로 참조 무결성 보장<br>
-            • 인덱스 최적화로 검색 성능 향상<br>
-            • JPA 연관관계 매핑으로 객체지향적 설계
+            • 영화–영화인(M:N) 구조를 <strong>조인 테이블(movie_person)</strong>로 분리하여 데이터 중복 방지<br>
+            • 영화관·스크린·브랜드·지역을 <strong>독립 엔티티로 분리</strong>해 유지보수성과 확장성 확보<br>
+            • 외래키 기반의 <strong>참조 무결성</strong>으로 데이터 일관성 보장<br>
+            • JPA의 <strong>단방향/양방향 연관관계</strong>(ManyToOne/OneToMany)를 활용한 구조적 표현<br>
         </div>
     </div>
 
     <!-- API 명세 -->
-    <div class="section">
-        <h2 id="api-spec">📡 API 명세</h2>
+<div class="section">
+    <h2 id="api-spec">📡 API 명세</h2>
 
-        <h3>영화 정보 API</h3>
-        <table class="api-table">
-            <thead>
-                <tr>
-                    <th>Method</th>
-                    <th>Endpoint</th>
-                    <th>Description</th>
-                    <th>Parameters</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="method-badge method-get">GET</span></td>
-                    <td><code>/movie/box-office/daily</code></td>
-                    <td>일일 박스오피스 조회</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><span class="method-badge method-get">GET</span></td>
-                    <td><code>/movie/now-playing</code></td>
-                    <td>현재 상영작 목록</td>
-                    <td>page (default: 0)<br>size (default: 20)</td>
-                </tr>
-                <tr>
-                    <td><span class="method-badge method-get">GET</span></td>
-                    <td><code>/movie/upcoming</code></td>
-                    <td>개봉 예정작 목록</td>
-                    <td>page (default: 0)<br>size (default: 20)</td>
-                </tr>
-                <tr>
-                    <td><span class="method-badge method-get">GET</span></td>
-                    <td><code>/movie/search/db</code></td>
-                    <td>DB 내부 영화 검색</td>
-                    <td>title (required)</td>
-                </tr>
-                <tr>
-                    <td><span class="method-badge method-get">GET</span></td>
-                    <td><code>/movie/search/kmdb</code></td>
-                    <td>KMDB API 영화 검색</td>
-                    <td>title (required)</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- API 테이블 -->
+    <table class="api-table">
+        <thead>
+            <tr>
+                <th style="width: 80px;">Method</th>
+                <th style="width: 250px;">Endpoint</th>
+                <th>Description</th>
+                <th style="width: 150px;">Parameters</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 영화 API -->
+            <tr>
+                <td><span class="method-badge method-get">GET</span></td>
+                <td><code>/movie/box-office/daily</code></td>
+                <td>일일 박스오피스 조회</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><span class="method-badge method-get">GET</span></td>
+                <td><code>/movie/now-playing</code></td>
+                <td>현재 상영작 목록</td>
+                <td>page, size</td>
+            </tr>
+            <tr>
+                <td><span class="method-badge method-get">GET</span></td>
+                <td><code>/movie/upcoming</code></td>
+                <td>개봉 예정작 목록</td>
+                <td>page, size</td>
+            </tr>
+            <tr>
+                <td><span class="method-badge method-get">GET</span></td>
+                <td><code>/movie/search/db</code></td>
+                <td>DB 내부 영화 검색</td>
+                <td>title</td>
+            </tr>
+            
+            <!-- 페이지 렌더링 -->
+            <tr style="border-top: 2px solid #e0e0e0;">
+                <td><span class="method-badge method-get">GET</span></td>
+                <td><code>/</code></td>
+                <td>메인 페이지 (Thymeleaf)</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
 
-        <h3 style="margin-top: 30px;">페이지 렌더링</h3>
-        <table class="api-table">
-            <thead>
-                <tr>
-                    <th>Method</th>
-                    <th>Endpoint</th>
-                    <th>Description</th>
-                    <th>View</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="method-badge method-get">GET</span></td>
-                    <td><code>/</code></td>
-                    <td>메인 페이지</td>
-                    <td>home.html</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3 style="margin-top: 30px;">응답 예시</h3>
-        <div class="code-block">
+    <!-- 응답 예시 (간략화) -->
+    <details style="margin-top: 20px;">
+        <summary style="cursor: pointer; font-weight: bold; padding: 10px; background: #f5f5f5; border-radius: 5px;">
+            📄 응답 예시 보기
+        </summary>
+        <div class="code-block" style="margin-top: 10px;">
 // GET /movie/box-office/daily
 {
     "boxOfficeType": "일별 박스오피스",
     "showRange": "2025-11-13",
-    "movies": [
-        {
-            "rank": 1,
-            "movieCd": "20258383",
-            "docId": "F65015",
-            "title": "나우 유 씨 미 3",
-            "poster": "http://file.koreafilm.or.kr/thm/02/99/19/18/tn_DPF032068.jpg",
-            "genre": "액션,범죄",
-            "openDt": "2025-11-12",
-            "salesAmt": 629835950,
-            "salesAcc": 1398047490,
-            "audiCnt": 68496,
-            "audiAcc": 151446
-        },
+    "movies": [{
+        "rank": 1,
+        "title": "나우 유 씨 미 3",
+        "poster": "http://...",
+        "audiCnt": 68496,
         ...
-    ]
+    }]
 }
 
-// GET /movie/now-playing?page=0&size=20
-[
-  {
-        "docId": "F65015",
-        "title": "나우 유 씨 미 3",
-        "genre": "액션,범죄",
-        "rating": "12세이상관람가",
-        "repRlsDate": "20251112",
-        "poster": "http://file.koreafilm.or.kr/thm/02/99/19/18/tn_DPF032068.jpg"
-    },
-  ...
-]
-        </div>
+// GET /movie/now-playing
+[{
+    "docId": "F65015",
+    "title": "나우 유 씨 미 3",
+    "genre": "액션,범죄",
+    "poster": "http://..."
+}]
+            </div>
+        </details>
     </div>
 
     <!-- 프로젝트 구조 -->
@@ -653,32 +640,140 @@
         
         <div class="code-block">
 src/main/java/com/moviesite/
-├── controller/         # REST API 엔드포인트
-├── service/            # 비즈니스 로직
-├── repository/         # JPA Repository
-├── entity/             # JPA Entity (Movie, Theater, Review 등)
-├── dto/                # 요청/응답 DTO
-├── exception/          # 커스텀 예외 (MovieNotFoundException 등)
-│   └── handler/        # GlobalExceptionHandler
-├── config/             # Spring 설정 (WebConfig, SecurityConfig)
-└── scheduler/          # @Scheduled 배치 작업
+├── controller/        # REST API 엔드포인트
+├── service/           # 비즈니스 로직 & 트랜잭션 관리
+├── repository/        # JPA Repository (데이터 접근)
+├── entity/            # JPA Entity (Movie, Cinema 등)
+├── dto/               # 계층간 데이터 전송 객체
+│   ├── movie/         # 영화 관련 DTO
+│   └── cinema/        # 극장 관련 DTO
+├── exception/         # 예외 처리
+│   ├── CustomExceptions (MovieNotFoundException 등)
+│   └── GlobalExceptionHandler
+├── external/          # 외부 API 연동
+│   ├── adapter/       # API 어댑터
+│   ├── kobis/         # KOBIS API Client
+│   └── kmdb/          # KMDB API Client
+├── mapper/            # Entity ↔ DTO 변환
+├── config/            # Spring 설정 (Cache, Database 등)
+└── scheduler/         # 배치 작업 (@Scheduled)
 
 src/main/resources/
-├── data                # csv 파일
-├── static              # css/js/images
-└── templates/          # Thymeleaf 템플릿
-    └── fragments       # 시멘틱 태그
+├── data/              # 초기 데이터 (CSV)
+├── static/            # 정적 리소스 (CSS/JS/Images)
+└── templates/         # Thymeleaf 템플릿
+    └── fragments/     # 재사용 컴포넌트
         </div>
 
         <div class="highlight-box">
             <strong>🏗️ 아키텍처 특징:</strong><br>
             • <strong>Layered Architecture:</strong> Controller → Service → Repository 계층 분리<br>
-            • <strong>Domain-Driven Design:</strong> Entity 중심의 도메인 모델링<br>
             • <strong>Adapter Pattern:</strong> 외부 API 통합 시 어댑터 패턴 적용<br>
-            • <strong>DTO 변환:</strong> Entity와 DTO 명확히 분리하여 계층 간 결합도 최소화
+            • <strong>Entity의 캡슐화 강화:</strong> 변환 로직을 Entity가 책임지도록 설계<br>
+            • <strong>책임 분리:</strong> Service 분리(MovieService/MovieSyncService)로 SRP 준수
+        </div>
+    </div>
+    <!-- 시스템 아키텍처 -->
+<div class="section" id="architecture">
+    <h2>🏗️ 시스템 아키텍처</h2>
+    
+    <!-- 아키텍처 다이어그램 -->
+    <div style="margin: 30px auto; max-width: 1000px;">
+        <img src="./Architecture.png" 
+             alt="시스템 아키텍처" 
+             style="width: 50%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); border: 1px solid #dee2e6;">
+    </div>
+
+    <!-- 계층 설명 -->
+    <div style="margin-top: 40px;">
+        <h3 style="color: #495057; margin-bottom: 20px;">📋 계층별 역할</h3>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+            
+            <!-- Presentation Layer -->
+            <div style="padding: 20px; background: #e3f2fd; border-radius: 8px; border-left: 4px solid #1976d2;">
+                <h4 style="margin: 0 0 10px 0; color: #1976d2;">Presentation Layer</h4>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #495057;">
+                    <li>HTTP 요청/응답 처리</li>
+                    <li>View 렌더링 (Thymeleaf)</li>
+                    <li>REST API 엔드포인트 제공</li>
+                </ul>
+            </div>
+
+            <!-- Business Layer -->
+            <div style="padding: 20px; background: #e8f5e9; border-radius: 8px; border-left: 4px solid #388e3c;">
+                <h4 style="margin: 0 0 10px 0; color: #388e3c;">Business Layer</h4>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #495057;">
+                    <li>비즈니스 로직 수행</li>
+                    <li>트랜잭션 관리</li>
+                    <li>Spring Cache 적용 (1일 캐싱)</li>
+                </ul>
+            </div>
+
+            <!-- Adapter Layer -->
+            <div style="padding: 20px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #e65100;">
+                <h4 style="margin: 0 0 10px 0; color: #e65100;">Adapter Layer</h4>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #495057;">
+                    <li>외부 API 호출 (KOBIS, KMDB)</li>
+                    <li>외부 응답 → 내부 DTO 변환</li>
+                    <li>Service의 외부 의존성 격리</li>
+                </ul>
+            </div>
+
+            <!-- Persistence Layer -->
+            <div style="padding: 20px; background: #f3e5f5; border-radius: 8px; border-left: 4px solid #7b1fa2;">
+                <h4 style="margin: 0 0 10px 0; color: #7b1fa2;">Persistence Layer</h4>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #495057;">
+                    <li>데이터베이스 접근 (JPA)</li>
+                    <li>Entity 영속성 관리</li>
+                    <li>Mapper로 Entity ↔ DTO 변환</li>
+                </ul>
+            </div>
+
         </div>
     </div>
 
+    <!-- 핵심 설계 -->
+    <div style="margin-top: 40px; padding: 25px; background: #f8f9fa; border-radius: 10px; border: 1px solid #e9ecef;">
+        <h3 style="color: #495057; margin-bottom: 20px;">🎯 핵심 설계 포인트</h3>
+        
+        <div style="display: grid; gap: 15px;">
+            
+            <div style="padding: 15px; background: white; border-radius: 6px; border-left: 3px solid #1976d2;">
+                <strong style="color: #1976d2;">1. Adapter 패턴으로 외부 API 격리</strong>
+                <p style="margin: 8px 0 0 0; color: #6c757d; line-height: 1.6;">
+                    KOBIS, KMDB API를 Adapter로 감싸 Service가 외부 API 형식에 의존하지 않도록 설계.
+                    API 변경 시 Adapter만 수정하면 되어 유지보수성 향상.
+                </p>
+            </div>
+
+            <div style="padding: 15px; background: white; border-radius: 6px; border-left: 3px solid #388e3c;">
+                <strong style="color: #388e3c;">2. Service 중심 오케스트레이션</strong>
+                <p style="margin: 8px 0 0 0; color: #6c757d; line-height: 1.6;">
+                    모든 비즈니스 로직이 Service를 거치도록 설계. Adapter, Mapper, Repository는 Service만 접근하여
+                    의존성 방향이 명확하고 순환 참조 방지.
+                </p>
+            </div>
+
+            <div style="padding: 15px; background: white; border-radius: 6px; border-left: 3px solid #f57c00;">
+                <strong style="color: #f57c00;">3. DTO 계층 분리</strong>
+                <p style="margin: 8px 0 0 0; color: #6c757d; line-height: 1.6;">
+                    Entity와 DTO를 명확히 분리하여 API 스펙 변경 시 Entity에 영향 없음.
+                    Request/Response DTO로 계층간 결합도 최소화.
+                </p>
+            </div>
+
+            <div style="padding: 15px; background: white; border-radius: 6px; border-left: 3px solid #7b1fa2;">
+                <strong style="color: #7b1fa2;">4. 책임 분리 (SRP)</strong>
+                <p style="margin: 8px 0 0 0; color: #6c757d; line-height: 1.6;">
+                    MovieService(조회/검색)와 MovieSyncService(동기화/저장)로 분리하여
+                    Command/Query 책임을 나누고 각 Service를 120줄 이내로 유지.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
     <!-- 기술적 구현 사항 -->
     <div class="section">
         <h2>💡 기술적 구현 사항</h2>
@@ -686,7 +781,7 @@ src/main/resources/
         <div class="implementation-grid">
             <div class="implementation-item">
                 <h3>🔗 외부 API 통합</h3>
-                <p>KOBIS, KMDB 등 3개 외부 API를 통합하여 데이터 일관성 확보</p>
+                <p>KOBIS, KMDB 2개 외부 API를 통합하여 데이터 일관성 확보</p>
                 <ul style="margin-top: 10px; font-size: 0.9em; color: #718096;">
                     <li>WebClient 기반 API 클라이언트</li>
                     <li>Adapter 패턴으로 API 별 구현 분리</li>
@@ -705,12 +800,12 @@ src/main/resources/
             </div>
 
             <div class="implementation-item">
-                <h3>🗺️ 좌표계 변환(예정)</h3>
-                <p>WGS84 ↔ EPSG5174 좌표계 변환 로직 자체 구현</p>
+                <h3>🗺️ 타임리프</h3>
+                <p>서버에서 뷰를 보내는 ssr 구현</p>
                 <ul style="margin-top: 10px; font-size: 0.9em; color: #718096;">
-                    <li>중부원점 TM 좌표계 변환</li>
-                    <li>위치 기반 거리 계산(PostGis이용예정)</li>
-                    <li>주변 극장 검색 최적화</li>
+                    <li>html은 seo에 유리하여 서버에서 만든 뒤 전송</li>
+                    <li>프레그먼트를 활용하여 구조화 및 재활용</li>
+                    <li>스프링과 같이 배포용이</li>
                 </ul>
             </div>
 
@@ -757,46 +852,10 @@ src/main/resources/
             • 해결: 예외 처리 + DB에 저장된 최근 데이터 제공 (Fallback)<br>
             • 결과: 서비스 가용성 99% 이상 유지<br><br>
 
-            <strong>3. 좌표계 변환 정확도</strong><br>
-            • 문제: 위치 기반 검색 시 부정확한 결과<br>
-            • 해결: EPSG5174 좌표계 직접 구현 + 거리 계산 알고리즘 적용<br>
-            • 결과: 1km 오차 범위 내 정확한 극장 검색
         </div>
     </div>
 
-    <!-- 스크린샷 -->
-    <div class="section">
-        <h2>📸 주요 화면</h2>
-        <div class="screenshots">
-            <div class="screenshot-placeholder">
-                <div>
-                    <strong>박스오피스 화면</strong><br>
-                    <small>일일/주간 순위 실시간 표시</small>
-                </div>
-            </div>
-            <div class="screenshot-placeholder">
-                <div>
-                    <strong>상영작 목록</strong><br>
-                    <small>현재 상영중인 영화 카드 뷰</small>
-                </div>
-            </div>
-            <div class="screenshot-placeholder">
-                <div>
-                    <strong>개봉 예정작</strong><br>
-                    <small>개봉 예정 영화 정보</small>
-                </div>
-            </div>
-            <div class="screenshot-placeholder">
-                <div>
-                    <strong>API 테스트</strong><br>
-                    <small>Postman 응답 예시</small>
-                </div>
-            </div>
-        </div>
-        <p style="text-align: center; color: #718096; margin-top: 15px;">
-            * 실제 스크린샷 및 시연 영상은 GitHub README에서 확인 가능합니다
-        </p>
-    </div>
+    
 
     <!-- 회고 및 개선사항 -->
     <div class="section">
