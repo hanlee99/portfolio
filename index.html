@@ -18,10 +18,10 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.5;
-            color: #333;
+            line-height: 1.6;
+            color: #2d3748;
             background: white;
-            font-size: 11pt;
+            font-size: 10.5pt;
         }
 
         .container {
@@ -34,159 +34,233 @@
         header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 30px 20px;
+            padding: 35px 25px;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             page-break-after: avoid;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         h1 {
-            font-size: 28pt;
-            margin-bottom: 8px;
+            font-size: 32pt;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
-            font-size: 14pt;
+            font-size: 15pt;
             opacity: 0.95;
+            font-weight: 500;
+            letter-spacing: 1px;
         }
 
         .contact {
-            margin-top: 12px;
-            font-size: 9pt;
-            opacity: 0.9;
+            margin-top: 15px;
+            font-size: 9.5pt;
+            opacity: 0.92;
+            line-height: 1.8;
         }
 
         .contact a {
             color: white;
             text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
         }
 
         /* 섹션 */
         .section {
-            margin-bottom: 15px;
-            padding: 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 18px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
             page-break-inside: avoid;
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
         h2 {
             color: #667eea;
-            margin-bottom: 12px;
-            padding-bottom: 6px;
-            border-bottom: 2px solid #f0f0f0;
-            font-size: 16pt;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #edf2f7;
+            font-size: 17pt;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         h3 {
-            color: #4a5568;
-            margin: 10px 0 6px 0;
+            color: #2d3748;
+            margin: 12px 0 8px 0;
             font-size: 12pt;
+            font-weight: 600;
         }
 
-        /* 프로젝트 요약 박스 */
+        /* 프로젝트 요약 */
         .project-summary {
-            background: #f8f9fa;
-            border-left: 4px solid #667eea;
-            padding: 12px;
-            margin: 10px 0;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-left: 5px solid #667eea;
+            padding: 15px;
+            margin: 12px 0;
             font-size: 10pt;
+            border-radius: 6px;
+            line-height: 1.8;
+        }
+
+        .project-summary strong {
+            color: #667eea;
+            font-weight: 600;
         }
 
         /* 기술 스택 */
         .tech-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin: 10px 0;
+            gap: 12px;
+            margin: 12px 0;
         }
 
         .tech-item {
-            background: #f7fafc;
-            padding: 8px;
-            border-radius: 6px;
+            background: linear-gradient(135deg, #f7fafc 0%, #fff 100%);
+            padding: 12px;
+            border-radius: 8px;
             font-size: 9pt;
             text-align: center;
+            border: 1px solid #e2e8f0;
         }
 
         .tech-item strong {
             color: #667eea;
             display: block;
-            margin-bottom: 4px;
-            font-size: 10pt;
+            margin-bottom: 6px;
+            font-size: 11pt;
+            font-weight: 700;
         }
 
-        /* 핵심 성과 */
-        .achievement-grid {
+        /* 주요 화면 */
+        .screenshot-row {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 10px 0;
-        }
-
-        .achievement-item {
-            background: #f7fafc;
-            padding: 10px;
-            border-radius: 6px;
-            border-left: 3px solid #667eea;
-            font-size: 9pt;
-        }
-
-        .achievement-item strong {
-            color: #667eea;
-            display: block;
-            margin-bottom: 4px;
-            font-size: 10pt;
-        }
-
-        /* 스크린샷 */
-        .screenshot-container {
-            text-align: center;
+            gap: 15px;
             margin: 15px 0;
-            page-break-inside: avoid;
+        }
+
+        .screenshot-item {
+            text-align: center;
         }
 
         .screenshot {
-            max-width: 100%;
+            width: 100%;
             height: auto;
-            border: 1px solid #dee2e6;
-            border-radius: 6px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .screenshot-caption {
-            font-size: 9pt;
-            color: #6c757d;
-            margin-top: 5px;
+            font-size: 8.5pt;
+            color: #718096;
+            margin-top: 6px;
+            font-weight: 500;
         }
 
-        /* 링크 버튼 */
+        /* 문제 해결 카드 */
+        .problem-card {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 12px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .problem-card h4 {
+            color: #667eea;
+            font-size: 11pt;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .problem-section {
+            margin: 8px 0;
+            font-size: 9pt;
+            line-height: 1.7;
+        }
+
+        .problem-section strong {
+            display: block;
+            color: #2d3748;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .problem-result {
+            background: #e6fffa;
+            color: #234e52;
+            padding: 8px;
+            border-radius: 4px;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        /* 링크 */
         .links {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             margin-top: 15px;
             justify-content: center;
         }
 
         .btn {
             display: inline-block;
-            padding: 8px 16px;
+            padding: 10px 20px;
             background: #667eea;
             color: white;
             text-decoration: none;
-            border-radius: 4px;
-            font-size: 9pt;
-            font-weight: 500;
+            border-radius: 6px;
+            font-size: 9.5pt;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
         }
 
         /* 리스트 */
         ul {
-            margin: 8px 0;
-            padding-left: 20px;
+            margin: 10px 0;
+            padding-left: 22px;
         }
 
         li {
-            margin: 4px 0;
-            font-size: 10pt;
+            margin: 5px 0;
+            font-size: 9.5pt;
+            line-height: 1.6;
+        }
+
+        /* 2단 레이아웃 */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            font-size: 9pt;
+        }
+
+        .column-box {
+            background: #f7fafc;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        .column-box strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 10.5pt;
+            font-weight: 700;
+        }
+
+        .column-box ul {
+            margin-top: 5px;
         }
 
         /* 페이지 구분 */
@@ -194,7 +268,7 @@
             page-break-after: always;
         }
 
-        /* 인쇄용 스타일 */
+        /* 인쇄용 */
         @media print {
             body {
                 background: white;
@@ -210,42 +284,66 @@
             }
 
             .btn {
-                border: 1px solid #667eea;
+                border: 2px solid #667eea;
+            }
+
+            .section {
+                box-shadow: none;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- 페이지 1: 프로젝트 개요 및 핵심 성과 -->
+<!-- 페이지 1 -->
 <header>
     <h1>이한 (Lee Han)</h1>
     <p class="subtitle">Backend Developer</p>
     <div class="contact">
         📞 010-3845-9075 | 📧 cahannon538@naver.com<br>
-        💻 github.com/hanlee99 | 🔗 movie-cinemasite.onrender.com
+        💻 <a href="https://github.com/hanlee99">github.com/hanlee99</a> | 
+        🔗 <a href="https://movie-cinemasite.onrender.com">movie-cinemasite.onrender.com</a>
     </div>
 </header>
 
 <div class="container">
-    <!-- 프로젝트 요약 -->
+    
+    <!-- 프로젝트 소개 -->
     <div class="section">
-        <h2>🎬 영화 정보 통합 서비스</h2>
+        <h2>🎬 오늘의 영화 - 영화 정보 통합 제공 서비스 </h2>
         
         <div class="project-summary">
-            <strong>개발 기간:</strong> 2025.10 ~ 2025.11 (1개월) | <strong>개발 인원:</strong> 1인 (기획/설계/개발)<br>
-            <strong>핵심 역량:</strong> API 통합 아키텍처 설계, 성능 최적화, 보안 구현
+            <strong>개발 기간:</strong> 2025.10 ~ 2025.11 (1개월) | 
+            <strong>개발 인원:</strong> 1인 <br>
+            <strong>배포:</strong> Render + PostgreSQL | 
+            <strong>핵심 기술:</strong> Spring Boot, JPA, REST API, Spring Security
         </div>
 
-        <p style="margin: 10px 0; line-height: 1.7;">
-            KOBIS(영화진흥위원회)와 KMDB(한국영화데이터베이스) API를 통합하여 
-            실시간 박스오피스와 영화 상세 정보를 제공하는 웹 서비스. 
-            Adapter 패턴으로 외부 API 의존성을 격리하고, Spring Security로 관리자 인증 체계 구축.
+        <p style="margin: 12px 0; line-height: 1.8; font-size: 10pt;">
+            KOBIS(영화진흥위원회)와 KMDB(한국영화데이터베이스) 두 개의 외부 API를 통합하여 
+            실시간 박스오피스 순위와 영화 상세 정보를 제공하는 웹 서비스입니다. 
+            Adapter 패턴으로 외부 API 의존성을 격리하고, N+1 쿼리 최적화를 통해 응답 속도를 개선했습니다.
         </p>
 
         <div class="links no-print">
-            <a href="https://github.com/hanlee99/movie-cinemaSite" class="btn">GitHub</a>
-            <a href="https://movie-cinemasite.onrender.com/" class="btn">배포 사이트</a>
+            <a href="https://github.com/hanlee99/movie-cinemaSite" class="btn">📂 GitHub 코드</a>
+            <a href="https://movie-cinemasite.onrender.com/" class="btn">🚀 배포 사이트</a>
+        </div>
+    </div>
+
+    <!-- 주요 화면 -->
+    <div class="section">
+        <h2>🖼️ 주요 화면</h2>
+        
+        <div class="screenshot-row">
+            <div class="screenshot-item">
+                <img src="./dailyBoxOffice.png" alt="메인 페이지" class="screenshot">
+                <p class="screenshot-caption">실시간 박스오피스 & 영화 목록</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="./movieDetail.png" alt="영화 상세" class="screenshot">
+                <p class="screenshot-caption">영화 상세 정보</p>
+            </div>
         </div>
     </div>
 
@@ -258,85 +356,106 @@
                 <strong>Backend</strong>
                 Spring Boot 3.x<br>
                 Java 21<br>
-                JPA/Hibernate
+                Spring Data JPA<br>
+                Lombok
             </div>
             <div class="tech-item">
                 <strong>Database</strong>
                 PostgreSQL<br>
                 H2 (Dev)<br>
-                Caffeine Cache
+                JPA/Hibernate
             </div>
             <div class="tech-item">
                 <strong>Security</strong>
                 Spring Security<br>
-                BCrypt<br>
                 환경변수 관리
             </div>
             <div class="tech-item">
                 <strong>Frontend</strong>
                 Thymeleaf<br>
-                Tailwind CSS<br>
                 JavaScript (ES6+)
             </div>
             <div class="tech-item">
                 <strong>Tools</strong>
                 Git/GitHub<br>
                 Gradle<br>
-                Postman
+                Postman<br>
+                IntelliJ IDEA
             </div>
             <div class="tech-item">
                 <strong>Deploy</strong>
                 Render<br>
-                Docker<br>
                 PostgreSQL
             </div>
         </div>
     </div>
 
-    <!-- 핵심 성과 -->
+    <!-- 문제 해결 경험 - 페이지 1 -->
     <div class="section">
-        <h2>💡 핵심 기술 성과</h2>
+        <h2>🔧 핵심 문제 해결 경험</h2>
         
-        <div class="achievement-grid">
-            <div class="achievement-item">
-                <strong>1. API 데이터 통합</strong>
-                • Adapter 패턴으로 외부 API 격리<br>
-                • KMDB → DB 저장 후 KOBIS 매칭<br>
-                • API 호출 횟수 최소화
+        <div class="problem-card">
+            <h4>1. 외부 API 데이터 통합 아키텍처 설계</h4>
+            <div class="problem-section">
+                <strong>🎯 문제 상황</strong>
+                • KOBIS API: 박스오피스 순위만 제공 (포스터/상세정보 없음)<br>
+                • KMDB API: 영화 상세 정보 제공<br>
+                • 두 API의 영화 제목이 공백, 특수문자 차이로 매칭 실패
             </div>
-
-            <div class="achievement-item">
-                <strong>2. 성능 최적화</strong>
-                • N+1 쿼리 해결 (Fetch Join)<br>
-                • Caffeine 캐시로 중복 호출 방지<br>
-                • 트랜잭션 범위 최적화
+            <div class="problem-section">
+                <strong>💡 해결 과정</strong>
+                💡 해결 과정
+                1. Adapter 패턴으로 외부 API 의존성 격리
+                2. KMDB 데이터를 먼저 DB에 저장 (1,928건)
+                3. KOBIS 순위 조회 시 2단계 매칭 전략 적용:
+                   • 1차: 정확 매칭 (title 완전 일치)
+                   • 2차: 공백 제거 후 LIKE 검색
+                4. 매칭 실패 시 기본 정보만 표시
             </div>
-
-            <div class="achievement-item">
-                <strong>3. 보안 구현</strong>
-                • Spring Security 관리자 인증<br>
-                • BCrypt 비밀번호 암호화<br>
-                • 환경변수 기반 API 키 관리
-            </div>
-
-            <div class="achievement-item">
-                <strong>4. 데이터 정합성</strong>
-                • UTF-8 인코딩 통일<br>
-                • 영화-영화인 다대다 관계 설계<br>
-                • 중복 데이터 제거
+            <div class="problem-result">
+                ✅ 결과: 대부분의 영화 데이터 매칭 성공, Service 계층의 외부 의존성 제거
             </div>
         </div>
-    </div>
 
-    <!-- 주요 화면 -->
-    <div class="section">
-        <h2>🖼️ 주요 화면</h2>
-        
-        <div class="screenshot-container">
-            <img src="./home3.png" alt="메인 페이지" class="screenshot" style="max-width: 80%;">
-            <p class="screenshot-caption">
-                일일 박스오피스, 현재 상영작, 개봉 예정작을 한눈에
-            </p>
+        <div class="problem-card">
+            <h4>2. N+1 쿼리 문제로 인한 성능 저하</h4>
+            <div class="problem-section">
+                <strong>🎯 문제 상황</strong>
+                • 영화 상세 페이지 로딩 시 출연진마다 개별 쿼리 발생<br>
+                • 영화 1개 조회 시 쿼리 50+ 개 실행 (출연진 수만큼)<br>
+                • 페이지 로딩 시간 2초 이상 소요
+            </div>
+            <div class="problem-section">
+                <strong>💡 해결 과정</strong>
+                1. 상황별 Repository 메서드 분리:<br>
+                &nbsp;&nbsp;&nbsp;• findById(): 기본 조회용<br>
+                &nbsp;&nbsp;&nbsp;• findByIdWithPeople(): LEFT JOIN FETCH 사용<br>
+                2. Controller에서 용도에 맞는 메서드 선택적 호출<br>
+                3. @Transactional(readOnly = true)로 조회 최적화
+            </div>
+            <div class="problem-result">
+                ✅ 결과: 쿼리 수 대폭 감소, 응답 속도 개선 (2초 → 0.79초)
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <h4>3. JsonNode → DTO 구조 리팩토링</h4>
+            <div class="problem-section">
+                <strong>🎯 문제 상황</strong>
+                • JsonNode로 API 응답 직접 파싱<br>
+                • 필드명 오타 위험, 타입 안정성 없음<br>
+                • API 변경 시 영향 범위 파악 어려움
+            </div>
+            <div class="problem-section">
+                <strong>💡 해결 과정</strong>
+                1. 외부 API DTO / 내부 Entity 명확히 분리<br>
+                2. Mapper 계층 도입으로 변환 로직 캡슐화<br>
+                3. @JsonProperty로 API 필드명 매핑<br>
+                4. 3일간 전체 구조 리팩토링
+            </div>
+            <div class="problem-result">
+                ✅ 결과: 타입 안정성 확보, 유지보수성 향상, 계층 간 결합도 감소
+            </div>
         </div>
     </div>
 
@@ -345,115 +464,160 @@
 <!-- 페이지 구분 -->
 <div class="page-break"></div>
 
-<!-- 페이지 2: 시스템 아키텍처 및 기술 상세 -->
+<!-- 페이지 2 -->
 <div class="container">
     
+    <!-- 문제 해결 경험 계속 -->
+    <div class="section">
+        <h2>🔧 핵심 문제 해결 경험 (계속)</h2>
+        
+        <div class="problem-card">
+            <h4>4. DB 구조 변경 (영화-영화인 관계 분리)</h4>
+            <div class="problem-section">
+                <strong>🎯 문제 상황</strong>
+                • 처음엔 영화 Entity 하나에 모든 정보 저장<br>
+                • 감독/배우 이름을 영화마다 중복 저장 (데이터 중복)<br>
+                • 영화 Entity가 너무 무거움<br>
+                • 같은 배우가 여러 영화에 나오면 이름 반복 저장
+            </div>
+            <div class="problem-section">
+                <strong>💡 해결 과정</strong>
+                1. 영화-영화인 관계를 별도 테이블로 분리<br>
+                2. Person Entity 생성 (영화인 정보)<br>
+                3. MoviePerson Entity (중간 테이블) 생성<br>
+                4. 다대다 관계로 설계 변경
+            </div>
+            <div class="problem-result">
+                ✅ 결과: 데이터 중복 제거, 영화 Entity 경량화, 영화인 정보 재사용 가능, DB 정규화 달성
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <h4>5. 한글 인코딩 & 데이터 정규화 문제</h4>
+            <div class="problem-section">
+                <strong>🎯 문제 상황</strong>
+                • KMDB API 응답에서 한글이 깨져 저장됨<br>
+                • 영화 제목 앞뒤 공백으로 매칭 실패<br>
+                • @JsonProperty 미설정으로 필드명 매핑 오류
+            </div>
+            <div class="problem-section">
+                <strong>💡 해결 과정</strong>
+                1. application.properties에서 UTF-8 강제 설정
+                2. HTTP 클라이언트를 WebClient로 전환
+                   (RestTemplate이 권장 중단되어 최신 기술 채택)
+                3. Entity 저장 시 trim()으로 공백 제거
+                4. DTO에 @JsonProperty로 API 필드명 매핑
+            </div>
+            <div class="problem-result">
+                ✅ 결과: 한글 정상 처리, 영화 제목 매칭 정확도 향상
+            </div>
+        </div>
+    </div>
+
     <!-- 시스템 아키텍처 -->
     <div class="section">
         <h2>🏗️ 시스템 아키텍처</h2>
         
-        <div class="screenshot-container">
-            <img src="./Architecture.png" alt="시스템 아키텍처" class="screenshot" style="max-width: 70%;">
-        </div>
-
-        <h3>📋 계층별 역할</h3>
-        <ul style="font-size: 9pt;">
-            <li><strong>Presentation Layer:</strong> HTTP 요청/응답, REST API 엔드포인트, View 렌더링</li>
-            <li><strong>Business Layer:</strong> 비즈니스 로직, 트랜잭션 관리, 캐싱 전략</li>
-            <li><strong>Adapter Layer:</strong> 외부 API 호출, 외부 응답 → 내부 DTO 변환</li>
-            <li><strong>Persistence Layer:</strong> JPA 기반 데이터 접근, Entity ↔ DTO 변환</li>
-        </ul>
-    </div>
-
-    <!-- 데이터베이스 설계 -->
-    <div class="section">
-        <h2>🗄️ 데이터베이스 설계</h2>
-        
-        <div class="screenshot-container">
-            <img src="./erdTable.png" alt="ERD" class="screenshot" style="max-width: 65%;">
-            <p class="screenshot-caption">
-                영화-영화인 다대다 관계, 극장-특별관 관계 등 총 7개 엔티티로 구성
-            </p>
+        <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; align-items: center;">
+            <div style="text-align: center;">
+                <img src="./Architecture.png" alt="시스템 아키텍처" class="screenshot" style="max-width: 100%;">
+            </div>
+            <div style="font-size: 9.5pt; line-height: 1.7;">
+                <strong style="color: #667eea; display: block; margin-bottom: 8px;">계층별 책임 분리</strong>
+                • <strong>Controller:</strong> HTTP 요청/응답<br>
+                • <strong>Service:</strong> 비즈니스 로직 & 트랜잭션<br>
+                • <strong>Adapter:</strong> 외부 API 격리<br>
+                • <strong>Repository:</strong> 데이터 접근<br><br>
+                
+                <strong style="color: #667eea; display: block; margin: 12px 0 8px 0;">핵심 설계 원칙</strong>
+                • Entity-DTO 분리로 계층간 결합도 최소화<br>
+                • CQRS: 조회/수정 서비스 분리<br>
+                • 의존성 역전: 외부 API → Adapter
+            </div>
         </div>
     </div>
 
-    <!-- 주요 구현 사항 -->
+    <!-- 주요 기술 선택 -->
     <div class="section">
-        <h2>⚙️ 주요 구현 사항</h2>
+        <h2>🎯 주요 기술 선택</h2>
         
-        <h3>1. 외부 API 통합 흐름</h3>
-        <div style="background: #f8f9fa; padding: 10px; border-radius: 6px; margin: 8px 0; font-size: 9pt;">
-            KMDB API → Adapter 변환 → Entity 저장 → DB<br>
-            KOBIS API → Adapter 변환 → DB 매칭 → 통합 DTO → Controller
-        </div>
-
-        <h3>2. N+1 쿼리 최적화</h3>
-        <ul style="font-size: 9pt;">
-            <li>문제: 영화 상세 조회 시 출연진마다 개별 쿼리 발생</li>
-            <li>해결: <code>LEFT JOIN FETCH</code>로 한 번에 조회</li>
-            <li>결과: 쿼리 수 대폭 감소, 응답 시간 개선</li>
-        </ul>
-
-        <h3>3. 보안 체계</h3>
-        <ul style="font-size: 9pt;">
-            <li>Spring Security: /admin/** 경로 ADMIN 역할 인증 필요</li>
-            <li>BCrypt: 관리자 비밀번호 암호화</li>
-            <li>환경변수: API 키 및 관리자 인증 정보 분리</li>
-        </ul>
-
-        <h3>4. 캐싱 전략</h3>
-        <ul style="font-size: 9pt;">
-            <li>Caffeine: 박스오피스 데이터 인메모리 캐싱</li>
-            <li>관리자 API: 수동 캐시 삭제 → 다음 요청 시 자동 갱신</li>
-            <li>결과: 중복 API 호출 제거, 응답 속도 개선</li>
-        </ul>
-    </div>
-
-    <!-- 문제 해결 경험 -->
-    <div class="section">
-        <h2>🔧 문제 해결 경험</h2>
-        
-        <div style="font-size: 9pt; line-height: 1.6;">
-            <strong style="color: #667eea;">1. 한글 인코딩 깨짐</strong><br>
-            • 문제: KMDB API 응답 한글이 깨져 영화 제목 매칭 실패<br>
-            • 해결: UTF-8 강제 설정 + trim() 처리로 정규화<br>
-            • 결과: 영화 제목 매칭 정확도 향상<br><br>
-
-            <strong style="color: #667eea;">2. Tailwind CSS 충돌</strong><br>
-            • 문제: 전역 CSS와 Tailwind 클래스 충돌로 UI 깨짐<br>
-            • 해결: 전역 규칙 제거 → Tailwind 일원화<br>
-            • 결과: 모든 화면 크기에서 일관된 UI<br><br>
-
-            <strong style="color: #667eea;">3. JsonNode → DTO 리팩토링</strong><br>
-            • 문제: 필드명 오타 위험, API 변경 시 영향 범위 불명확<br>
-            • 해결: DTO/Entity 계층 분리, Mapper 도입<br>
-            • 결과: 타입 안정성 확보, 유지보수성 향상
+        <div class="two-column">
+            <div class="column-box">
+                <strong>PostgreSQL 선택</strong>
+                <ul>
+                    <li>Render 플랫폼 무료 지원</li>
+                    <li>H2 대비 안정적인 운영 환경</li>
+                    <li>실무 스택 경험 축적</li>
+                    <li>복잡한 쿼리 성능 우수</li>
+                </ul>
+            </div>
+            <div class="column-box">
+                <strong>Service 계층 분리 (CQRS)</strong>
+                <ul>
+                    <li>MovieService: 조회 전용</li>
+                    <li>MovieSyncService: 수정/동기화</li>
+                    <li>readOnly 트랜잭션 최적화</li>
+                    <li>책임 분리로 유지보수성 향상</li>
+                </ul>
+            </div>
+            <div class="column-box">
+                <strong>Adapter Pattern 적용</strong>
+                <ul>
+                    <li>외부 API 변경 영향 최소화</li>
+                    <li>Service 의존성 제거</li>
+                    <li>테스트 용이성 향상</li>
+                    <li>확장성 확보</li>
+                </ul>
+            </div>
+            <div class="column-box">
+                <strong>Spring Cache 적용</strong>
+                <ul>
+                    <li>@Cacheable로 중복 API 호출 방지</li>
+                    <li>박스오피스 데이터 1일 캐싱</li>
+                    <li>API 호출 비용 절감</li>
+                    <li>응답 속도 개선</li>
+                </ul>
+            </div>
         </div>
     </div>
 
     <!-- 회고 -->
     <div class="section">
-        <h2>📝 회고 및 개선 계획</h2>
+        <h2>📝 프로젝트 회고</h2>
         
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 9pt;">
-            <div>
-                <strong style="color: #667eea;">✅ 잘한 점</strong>
-                <ul style="margin-top: 5px;">
-                    <li>체계적인 예외 처리</li>
-                    <li>계층별 역할 명확히 분리</li>
-                    <li>Adapter 패턴으로 확장성 확보</li>
-                    <li>상세한 로깅으로 디버깅 시간 단축</li>
+        <div class="two-column">
+            <div class="column-box">
+                <strong>✨ 배운 점</strong>
+                <ul>
+                    <li>외부 API 통합 시 데이터 정합성 유지의 중요성</li>
+                    <li>N+1 문제 등 성능 이슈를 직접 경험하고 해결</li>
+                    <li>계층 분리와 책임 분리의 실질적 효과 체감</li>
+                    <li>타입 안정성 확보가 유지보수에 미치는 영향</li>
+                    <li>초기 DB 설계의 중요성</li>
                 </ul>
             </div>
-            <div>
-                <strong style="color: #667eea;">🔧 개선 계획</strong>
-                <ul style="margin-top: 5px;">
-                    <li>테스트 코드 작성 (목표 80%)</li>
-                    <li>API 문서 자동화 (Swagger)</li>
-                    <li>Redis 캐싱 레이어 도입</li>
+            <div class="column-box">
+                <strong>🔧 개선하고 싶은 점</strong>
+                <ul>
+                    <li>테스트 커버리지 확대 (Controller, Repository)</li>
+                    <li>Swagger를 통한 API 문서 자동화</li>
+                    <li>더 세밀한 예외 처리</li>
+                    <li>Redis 도입으로 분산 캐싱 구현</li>
                     <li>CI/CD 파이프라인 구축</li>
                 </ul>
             </div>
+        </div>
+    </div>
+
+    <!-- ERD -->
+    <div class="section">
+        <h2>🗄️ 데이터베이스 설계 (ERD)</h2>
+        
+        <div style="text-align: center; margin: 15px 0;">
+            <img src="./movieErd.png" alt="ERD" class="screenshot" style="max-width: 70%;">
+            <p class="screenshot-caption" style="margin-top: 8px;">
+                영화-영화인 다대다 관계 설계 (MoviePersonEntity 중간 테이블 활용)
+            </p>
         </div>
     </div>
 
