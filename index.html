@@ -78,6 +78,9 @@
             background: #ffffff;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
+        .problem-card {
+            page-break-inside: avoid; 
+        }
 
         h2 {
             color: #667eea;
@@ -173,7 +176,6 @@
             border-radius: 8px;
             margin: 12px 0;
             border-left: 4px solid #667eea;
-            page-break-inside: avoid;  /* 카드가 페이지 중간에 안 잘리게 */
         }
 
         .problem-card h4 {
@@ -243,7 +245,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             font-size: 9pt;
-            page-break-inside: avoid;  /* 2단 레이아웃이 안 잘리게 */
         }
 
         .column-box {
@@ -251,7 +252,6 @@
             padding: 12px;
             border-radius: 8px;
             border-left: 3px solid #667eea;
-            page-break-inside: avoid;  /* 각 박스도 안 잘리게 */
         }
 
         .column-box strong {
@@ -303,7 +303,7 @@
     <h1>이한 (Lee Han)</h1>
     <p class="subtitle">Backend Developer</p>
     <div class="contact">
-        📞 010-3845-9075 | 📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e281838a838c8c8d8cd7d1daa28c83948790cc818d8f">[email&#160;protected]</a><br>
+        📞 010-3845-9075 | 📧 cahannon538@naver.com<br>
         💻 <a href="https://github.com/hanlee99">github.com/hanlee99</a> | 
         🔗 <a href="https://movie-cinemasite.onrender.com">movie-cinemasite.onrender.com</a>
     </div>
@@ -313,24 +313,24 @@
     
     <!-- 프로젝트 소개 -->
     <div class="section">
-        <h2>🎬 영화 정보 통합 플랫폼</h2>
+        <h2>🎬 오늘의 영화 - 영화 정보 통합 제공 서비스 </h2>
         
         <div class="project-summary">
-            <strong>개발 기간:</strong> 2024.10 ~ 2024.11 (1개월) | 
-            <strong>개발 인원:</strong> 1인 (기획/설계/개발/배포)<br>
+            <strong>개발 기간:</strong> 2025.10 ~ 2025.11 (1개월) | 
+            <strong>개발 인원:</strong> 1인 <br>
             <strong>배포:</strong> Render + PostgreSQL | 
             <strong>핵심 기술:</strong> Spring Boot, JPA, REST API, Spring Security
         </div>
 
         <p style="margin: 12px 0; line-height: 1.8; font-size: 10pt;">
             KOBIS(영화진흥위원회)와 KMDB(한국영화데이터베이스) 두 개의 외부 API를 통합하여 
-            실시간 박스오피스 순위와 1,900여 편의 영화 상세 정보를 제공하는 웹 서비스입니다. 
+            실시간 박스오피스 순위와 영화 상세 정보를 제공하는 웹 서비스입니다. 
             Adapter 패턴으로 외부 API 의존성을 격리하고, N+1 쿼리 최적화를 통해 응답 속도를 개선했습니다.
         </p>
 
         <div class="links no-print">
-            <a href="https://github.com/hanlee99/movie-cinemaSite" class="btn">📂 GitHub 코드</a>
-            <a href="https://movie-cinemasite.onrender.com/" class="btn">🚀 배포 사이트</a>
+            <a href="https://github.com/hanlee99/movie-cinemaSite" class="btn">GitHub 코드</a>
+            <a href="https://movie-cinemasite.onrender.com/" class="btn">배포 사이트</a>
         </div>
     </div>
 
@@ -340,11 +340,11 @@
         
         <div class="screenshot-row">
             <div class="screenshot-item">
-                <img src="./home3.png" alt="메인 페이지" class="screenshot">
+                <img src="./dailyBoxOffice.png" alt="메인 페이지" class="screenshot">
                 <p class="screenshot-caption">실시간 박스오피스 & 영화 목록</p>
             </div>
             <div class="screenshot-item">
-                <img src="./detail_page.png" alt="영화 상세" class="screenshot">
+                <img src="./movieDetail.png" alt="영화 상세" class="screenshot">
                 <p class="screenshot-caption">영화 상세 정보</p>
             </div>
         </div>
@@ -366,7 +366,6 @@
                 <strong>Database</strong>
                 PostgreSQL<br>
                 H2 (Dev)<br>
-                Caffeine Cache<br>
                 JPA/Hibernate
             </div>
             <div class="tech-item">
@@ -395,7 +394,7 @@
     </div>
 
     <!-- 문제 해결 경험 - 페이지 1 -->
-    <div class="section" style="page-break-after: always;">
+    <div class="section">
         <h2>🔧 핵심 문제 해결 경험</h2>
         
         <div class="problem-card">
@@ -411,8 +410,8 @@
                 1. Adapter 패턴으로 외부 API 의존성 격리<br>
                 2. KMDB 데이터를 먼저 DB에 저장 (1,928건)<br>
                 3. KOBIS 순위 조회 시 2단계 매칭 전략 적용:<br>
-                &nbsp;&nbsp;&nbsp;• 1차: 정확 매칭 (title 완전 일치)<br>
-                &nbsp;&nbsp;&nbsp;• 2차: 공백 제거 후 LIKE 검색<br>
+                   • 1차: 정확 매칭 (title 완전 일치)<br>
+                   • 2차: 공백 제거 후 LIKE 검색<br>
                 4. 매칭 실패 시 기본 정보만 표시
             </div>
             <div class="problem-result">
@@ -506,7 +505,8 @@
             <div class="problem-section">
                 <strong>💡 해결 과정</strong>
                 1. application.properties에서 UTF-8 강제 설정<br>
-                2. HttpURLConnection 헤더에 Accept-Charset: UTF-8 추가<br>
+                2. HTTP 클라이언트를 WebClient로 전환<br>
+                   (RestTemplate이 권장 중단되어 최신 기술 채택)<br>
                 3. Entity 저장 시 trim()으로 공백 제거<br>
                 4. DTO에 @JsonProperty로 API 필드명 매핑
             </div>
@@ -616,6 +616,15 @@
         <h2>🗄️ 데이터베이스 설계 (ERD)</h2>
         
         <div style="text-align: center; margin: 15px 0;">
-            <img src="./erdTable.png" alt="ERD" class="screenshot" style="max-width: 70%;">
+            <img src="./movieErd.png" alt="ERD" class="screenshot" style="max-width: 70%;">
             <p class="screenshot-caption" style="margin-top: 8px;">
-                영화-영화인 다대다 �
+                영화-영화인 다대다 관계 설계 (MoviePersonEntity 중간 테이블 활용)
+            </p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
