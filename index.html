@@ -393,6 +393,29 @@
         </div>
     </div>
 
+    <!-- 시스템 아키텍처 -->
+    <div class="section">
+        <h2>🏗️ 시스템 아키텍처</h2>
+        
+        <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; align-items: center;">
+            <div style="text-align: center;">
+                <img src="./Architecture.png" alt="시스템 아키텍처" class="screenshot" style="max-width: 100%;">
+            </div>
+            <div style="font-size: 9.5pt; line-height: 1.7;">
+                <strong style="color: #667eea; display: block; margin-bottom: 8px;">계층별 책임 분리</strong>
+                • <strong>Controller:</strong> HTTP 요청/응답<br>
+                • <strong>Service:</strong> 비즈니스 로직 & 트랜잭션<br>
+                • <strong>Adapter:</strong> 외부 API 격리<br>
+                • <strong>Repository:</strong> 데이터 접근<br><br>
+                
+                <strong style="color: #667eea; display: block; margin: 12px 0 8px 0;">핵심 설계 원칙</strong>
+                • Entity-DTO 분리로 계층간 결합도 최소화<br>
+                • CQRS: 조회/수정 서비스 분리<br>
+                • 의존성 역전: 외부 API → Adapter
+            </div>
+        </div>
+    </div>
+
     <!-- 문제 해결 경험 - 페이지 1 -->
     <div class="section">
         <h2>🔧 핵심 문제 해결 경험</h2>
@@ -516,29 +539,6 @@
         </div>
     </div>
 
-    <!-- 시스템 아키텍처 -->
-    <div class="section">
-        <h2>🏗️ 시스템 아키텍처</h2>
-        
-        <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; align-items: center;">
-            <div style="text-align: center;">
-                <img src="./Architecture.png" alt="시스템 아키텍처" class="screenshot" style="max-width: 100%;">
-            </div>
-            <div style="font-size: 9.5pt; line-height: 1.7;">
-                <strong style="color: #667eea; display: block; margin-bottom: 8px;">계층별 책임 분리</strong>
-                • <strong>Controller:</strong> HTTP 요청/응답<br>
-                • <strong>Service:</strong> 비즈니스 로직 & 트랜잭션<br>
-                • <strong>Adapter:</strong> 외부 API 격리<br>
-                • <strong>Repository:</strong> 데이터 접근<br><br>
-                
-                <strong style="color: #667eea; display: block; margin: 12px 0 8px 0;">핵심 설계 원칙</strong>
-                • Entity-DTO 분리로 계층간 결합도 최소화<br>
-                • CQRS: 조회/수정 서비스 분리<br>
-                • 의존성 역전: 외부 API → Adapter
-            </div>
-        </div>
-    </div>
-
     <!-- 주요 기술 선택 -->
     <div class="section">
         <h2>🎯 주요 기술 선택</h2>
@@ -627,4 +627,5 @@
 
 </body>
 </html>
+
 
