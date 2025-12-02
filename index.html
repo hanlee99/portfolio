@@ -406,7 +406,8 @@
                 <!-- 왼쪽: 소개 텍스트 -->
                 <div class="intro-box">
                     <p>어제는 해결하지 못할 것 같던 문제도, 오늘은 구조가 보이고, 내일은 해결할 수 있다고 믿는 백엔드 개발자입니다.</p>
-                    <p>프로젝트에서 3일간 DTO 구조를 리팩토링하며 이 철학을 실천했습니다.
+                    <p>
+                        프로젝트에서 3일간 DTO 구조를 리팩토링하며 이 철학을 실천했습니다.
                         하루 만에 끝내려 무리하지 않고, 매일 조금씩 개선하며 완성했습니다.</p>
                     <p>
                         1개월간 영화 정보 통합 서비스를 개발하며 N+1 쿼리 87% 개선, API 응답속도 72% 단축을 달성했습니다. 
@@ -420,12 +421,12 @@
                     <div style="background: #f7fafc; padding: 12px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid #667eea;">
                     <strong style="color: #667eea; font-size: 10pt;">🎓 학력</strong>
                     <p style="font-size: 9pt; margin-top: 5px; line-height: 1.6;">
-                        우석대학교<br>
+                        우석대학교 
                         컴퓨터공학과 <br>
                         2018.03 ~ 2023.02(중퇴)
                     </p>
                     <p style="font-size: 9pt; margin-top: 5px; line-height: 1.6;">
-                        명지대학교<br>
+                        명지대학교 
                         컴퓨터공학과 (편입)<br>
                         2023.03 ~ 2025.08(졸업)
                     </p>
@@ -545,28 +546,7 @@
             </div>
         </div>
 
-        <!-- 시스템 아키텍처 -->
-        <div class="section">
-            <h2>🏗️ 시스템 아키텍처</h2>
-
-            <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; align-items: center;">
-                <div style="text-align: center;">
-                    <img src="./Architecture.png" alt="시스템 아키텍처" class="screenshot" style="max-width: 100%;">
-                </div>
-                <div style="font-size: 9.5pt; line-height: 1.7;">
-                    <strong style="color: #667eea; display: block; margin-bottom: 8px;">계층별 책임 분리</strong>
-                    • <strong>Controller:</strong> HTTP 요청/응답<br>
-                    • <strong>Service:</strong> 비즈니스 로직<br>
-                    • <strong>Adapter:</strong> 외부 API 격리<br>
-                    • <strong>Repository:</strong> 데이터 접근<br><br>
-
-                    <strong style="color: #667eea; display: block; margin: 12px 0 8px 0;">핵심 설계</strong>
-                    • Entity-DTO 분리로 결합도 최소화<br>
-                    • CQRS: 조회/수정 서비스 분리<br>
-                    • 의존성 역전: 외부 API → Adapter
-                </div>
-            </div>
-        </div>
+        
 
         <!-- 페이지 구분 -->
         <div class="page-break"></div>
@@ -766,6 +746,30 @@
             </div>
         </div>
 
+        <!-- 시스템 아키텍처 -->
+        <div class="section">
+            <h2>🏗️ 시스템 아키텍처</h2>
+
+            <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; align-items: center;">
+                <div style="text-align: center;">
+                    <img src="./Architecture.png" alt="시스템 아키텍처" class="screenshot" style="max-width: 100%;">
+                </div>
+                <div style="font-size: 9.5pt; line-height: 1.7;">
+                    <strong style="color: #667eea; display: block; margin-bottom: 8px;">계층별 책임 분리</strong>
+                    • <strong>Controller:</strong> HTTP 요청/응답<br>
+                    • <strong>Service:</strong> 비즈니스 로직<br>
+                    • <strong>Adapter:</strong> 외부 API 격리<br>
+                    • <strong>Repository:</strong> 데이터 접근<br><br>
+
+                    <strong style="color: #667eea; display: block; margin: 12px 0 8px 0;">핵심 설계</strong>
+                    • Entity-DTO 분리로 결합도 최소화<br>
+                    • CQRS: 조회/수정 서비스 분리<br>
+                    • 의존성 역전: 외부 API → Adapter
+                </div>
+            </div>
+        </div>
+        
+
         <!-- ERD -->
         <div class="section">
             <h2>🗄️ 데이터베이스 설계 (ERD)</h2>
@@ -801,4 +805,5 @@
 </body>
 
 </html>
+
 
