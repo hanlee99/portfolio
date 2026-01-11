@@ -262,6 +262,7 @@
             border-radius: 8px;
             margin: 12px 0;
             border-left: 4px solid #667eea;
+            margin-bottom: 0;
         }
 
         .problem-card h4 {
@@ -427,7 +428,7 @@
                     </p>
                     <p style="font-size: 9pt; margin-top: 5px; line-height: 1.6;">
                         명지대학교 
-                        컴퓨터공학과 (편입)<br>
+                        컴퓨터공학과<br>
                         2023.03 ~ 2025.08(졸업)
                     </p>
                     </div>
@@ -467,7 +468,7 @@
             <h2>🛠 기술 스텍</h2>
             <div class="tech-summary">
                 <div class="intro-box">
-                    <strong>Backend:</strong> Java 21, Spring Boot 3.x, Spring Data JPA, Spring Security, Spring Cache<br>
+                    <strong>Backend:</strong> Java 21, Spring Boot 3.x, Spring Data JPA, Spring Security, Caffeine Cache<br>
                     <strong>Database:</strong> PostgreSQL, JPA/Hibernate<br>
                     <strong>Deploy:</strong> AWS EC2, Docker, GitHub Actions<br>
                     <strong>Frontend:</strong> Thymeleaf, JavaScript (ES6+), HTML/CSS<br>
@@ -514,7 +515,7 @@
 
         <!-- 프로젝트 소개 -->
         <div class="section">
-            <h2>🎬 프로젝트: 오늘의 영화</h2>
+            <h2>🎬 프로젝트1: 오늘의 영화</h2>
 
             <div class="project-summary">
                 <strong>개발 기간:</strong> 2025.10 ~  |
@@ -571,17 +572,17 @@
             <h2>🔧 핵심 문제 해결 경험</h2>
 
             <div class="problem-card">
-                <h4>1. 외부 API 데이터 통합 및 매칭 전략</h4>
+                <h4>1. [비즈니스] 외부 API 데이터 매칭률 100% 달성</h4>
                 <div class="problem-section">
                     <strong>🎯 문제</strong>
                     KOBIS와 KMDB API의 제목 표기 차이로 매칭 실패. 초기 매칭률 90%.
+                    (예: "코렐라인: 비밀의 문" vs "코렐라인과 비밀의 문")
                 </div>
                 <div class="problem-section">
                     <strong>💡 해결</strong>
-                    1. Adapter 패턴으로 외부 API 격리<br>
-                    2. KMDB 데이터 703건 선수집<br>
-                    3. 2단계 매칭 전략: 정확 매칭 → 공백 제거 LIKE 검색<br>
-                    4. 로깅으로 "코렐라인", "가타카" 등 재개봉 영화 누락 발견 및 추가
+                    1. 로그 분석으로 매칭 실패 패턴 발견<br>
+                    2. 2단계 매칭 전략: 정확 매칭 → 공백/특수문자 제거 LIKE 검색<br>
+                    3. 재개봉 영화("코렐라인", "가타카" 등) 별도 처리 로직 추가
                 </div>
                 <div class="problem-result">
                     ✅ 결과: 매칭률 90% → 100% 달성
@@ -589,15 +590,15 @@
             </div>
 
             <div class="problem-card">
-                <h4>2. N+1 쿼리 문제 해결</h4>
+                <h4>2. [N+1] 쿼리 최적화로 87% 성능 개선</h4>
                 <div class="problem-section">
                     <strong>🎯 문제</strong>
                     영화 상세 페이지에서 출연진마다 개별 쿼리 발생 (영화 1개 + 출연진 7명 = 8개 쿼리).
                 </div>
                 <div class="problem-section">
                     <strong>💡 해결</strong>
-                    1. Hibernate SQL 로그로 문제 확인<br>
-                    2. fetch join으로 MovieEntity → MoviePersonEntity → PersonEntity 한 번에 조회<br>
+                    1. Hibernate SQL 로그로 N+1 문제 확인<br>
+                    2. Fetch Join으로 Movie → MoviePerson → Person 한 번에 조회<br>
                     3. DISTINCT로 중복 제거<br>
                     4. 상황별 Repository 메서드 분리 (findById / findByIdWithPeople)
                 </div>
@@ -607,16 +608,38 @@
             </div>
 
             <div class="problem-card">
-                <h4>3. 캐싱 전략으로 API 호출 최적화</h4>
+                <h4>3. [동시성] 다중 사용자 환경 데이터 정합성 보장</h4>
                 <div class="problem-section">
                     <strong>🎯 문제</strong>
-                    KOBIS API 호출 시 평균 1.5-2초 소요. 박스오피스는 하루 단위 업데이트.
+                    여러 사용자가 동시에 영화 조회수를 업데이트할 때 Lost Update 발생 가능성.
+                    (예: 조회수 100 → 두 사용자 동시 접근 → 101이어야 하는데 100+1=101로만 저장)
+                </div>
+                <div class="problem-section">
+                    <strong>💡 고민한 선택지</strong>
+                    1) Pessimistic Lock → DB 락으로 성능 저하<br>
+                    2) Optimistic Lock → 충돌 시 예외 발생, 재시도 필요<br>
+                    3) Optimistic Lock + @Retryable → 충돌 시 자동 재시도
+                </div>
+                <div class="problem-section">
+                    <strong>✅ 해결</strong>
+                    JPA @Version으로 Optimistic Lock 적용 + Spring @Retryable로 충돌 시 3회 재시도
+                </div>
+                <div class="problem-result">
+                    ✅ 결과: 동시성 환경에서 데이터 정합성 보장, 성능 저하 없음
+                </div>
+            </div>
+
+            <div class="problem-card">
+                <h4>4. [캐싱] Caffeine Cache로 API 응답속도 72% 개선</h4>
+                <div class="problem-section">
+                    <strong>🎯 문제</strong>
+                    KOBIS 외부 API 호출 시 평균 1.77초 소요. 박스오피스 데이터는 하루 단위 업데이트라 매번 호출 불필요.
                 </div>
                 <div class="problem-section">
                     <strong>💡 해결</strong>
-                    1. Spring Cache (@Cacheable) 적용<br>
-                    2. 날짜별 캐시 키 관리<br>
-                    3. 1일 TTL 설정
+                    1. Caffeine Cache 적용 (인메모리 캐시)<br>
+                    2. 1시간 TTL 설정 (박스오피스 업데이트 주기 고려)<br>
+                    3. 날짜별 캐시 키 관리로 일별 데이터 분리
                 </div>
                 <div class="problem-result">
                     ✅ 결과: 응답속도 1.77초 → 0.5초 (72% 개선), API 호출 80% 감소
@@ -624,56 +647,41 @@
             </div>
 
             <div class="problem-card">
-                <h4>4. JsonNode → DTO 구조 리팩토링</h4>
+                <h4>5. [아키텍처] Adapter 패턴으로 외부 API 의존성 격리</h4>
                 <div class="problem-section">
                     <strong>🎯 문제</strong>
-                    JsonNode로 API 응답 직접 파싱. 필드명 오타 위험, 타입 안정성 없음.
+                    초기에 JsonNode로 외부 API 응답 직접 파싱 → 필드명 오타 위험, 타입 안정성 없음.
+                    외부 API 스펙 변경 시 비즈니스 로직 전체 수정 필요.
                 </div>
                 <div class="problem-section">
                     <strong>💡 해결</strong>
-                    1. 외부 API DTO / 내부 Entity 분리<br>
-                    2. Mapper 계층 도입<br>
-                    3. @JsonProperty로 필드명 매핑<br>
+                    1. Adapter 패턴 도입: Service → Adapter → 외부 API<br>
+                    2. 외부 API DTO / 내부 Domain DTO 분리<br>
+                    3. Mapper 계층으로 변환 로직 격리<br>
                     4. 3일간 전체 구조 리팩토링
                 </div>
                 <div class="problem-result">
-                    ✅ 결과: 타입 안정성 확보, API 변경 영향 최소화
+                    ✅ 결과: API 변경 시 Adapter만 수정, 비즈니스 로직 영향 없음
                 </div>
             </div>
 
             <div class="problem-card">
-                <h4>5. DB 구조 정규화 (영화-영화인 관계)</h4>
+                <h4>6. [CI/CD] GitHub Actions로 배포 자동화</h4>
                 <div class="problem-section">
                     <strong>🎯 문제</strong>
-                    영화 Entity에 출연진 직접 저장 → 배우 중복, Entity 비대화.
+                    수동 배포 시 휴먼 에러 위험 (빌드 누락, 테스트 스킵 등).
+                    배포할 때마다 SSH 접속 → 빌드 → 재시작 반복.
                 </div>
                 <div class="problem-section">
                     <strong>💡 해결</strong>
-                    1. Person Entity 생성 (영화인 정보 통합)<br>
-                    2. MoviePerson Entity (중간 테이블)<br>
-                    3. 다대다 관계 설계
+                    1. GitHub Actions 워크플로우 구성<br>
+                    2. main 브랜치 push 시 자동 실행<br>
+                    3. 테스트 → 빌드 → EC2 배포 파이프라인 구축
                 </div>
                 <div class="problem-result">
-                    ✅ 결과: 데이터 중복 제거, 영화인 정보 재사용, 703개 영화 + 5,532명 관리
+                    ✅ 결과: push만 하면 자동 배포, 휴먼 에러 제거
                 </div>
             </div>
-
-            <!--<div class="problem-card">
-                <h4>6. 극장 위치 데이터 정제 및 좌표계 변환</h4>
-                <div class="problem-section">
-                    <strong>🎯 문제</strong>
-                    공공데이터 432개 극장 중 좌표 누락·오류. 제공 좌표계(EPSG:5174) ≠ 일반 지도(WGS84).
-                </div>
-                <div class="problem-section">
-                    <strong>💡 해결</strong>
-                    1. 카카오맵 API로 주소→좌표 자동 변환<br>
-                    2. Proj4j로 EPSG:5174 → WGS84 일괄 변환<br>
-                    3. Cinema / SpecialtyTheater 테이블 분리
-                </div>
-                <div class="problem-result">
-                    ✅ 결과: 432개 극장 좌표 정제, 데이터 정합성 확보
-                </div>
-            </div>-->
         </div>
 
         <!-- 페이지 구분 -->
@@ -685,24 +693,6 @@
 
             <div class="two-column">
                 <div class="column-box">
-                    <strong>PostgreSQL 채택</strong>
-                    <ul>
-                        <li>AWS EC2 환경에서 안정적 운영</li>
-                        <li>H2 대비 안정적 운영 환경</li>
-                        <li>복잡한 JOIN, LIKE 최적화 우수</li>
-                        <li>향후 Full-text search 확장 가능</li>
-                    </ul>
-                </div>
-                <div class="column-box">
-                    <strong>Service 계층 분리 (CQRS)</strong>
-                    <ul>
-                        <li>MovieService: 조회 전용</li>
-                        <li>MovieSyncService: 수정/동기화</li>
-                        <li>트랜잭션 최적화로 DB 부하 감소</li>
-                        <li>단일 책임 원칙(SRP) 준수</li>
-                    </ul>
-                </div>
-                <div class="column-box">
                     <strong>Adapter Pattern</strong>
                     <ul>
                         <li>Service → Adapter → 외부 API</li>
@@ -712,12 +702,30 @@
                     </ul>
                 </div>
                 <div class="column-box">
-                    <strong>Spring Cache 전략</strong>
+                    <strong>Caffeine Cache 전략</strong>
                     <ul>
-                        <li>응답속도 72% 개선</li>
+                        <li>응답속도 72% 개선 (1.77초→0.5초)</li>
                         <li>API 호출 80% 감소</li>
-                        <li>날짜별 캐시 키, 1일 TTL</li>
-                        <li>외부 API 호출 비용 절감</li>
+                        <li>1시간 TTL, 날짜별 캐시 키</li>
+                        <li>인메모리 캐시로 빠른 응답</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <strong>동시성 제어 (Optimistic Lock)</strong>
+                    <ul>
+                        <li>JPA @Version으로 버전 관리</li>
+                        <li>@Retryable로 충돌 시 3회 재시도</li>
+                        <li>Pessimistic Lock 대비 성능 우수</li>
+                        <li>다중 사용자 환경 정합성 보장</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <strong>GitHub Actions CI/CD</strong>
+                    <ul>
+                        <li>main push 시 자동 배포</li>
+                        <li>테스트 → 빌드 → EC2 배포</li>
+                        <li>수동 배포 휴먼 에러 제거</li>
+                        <li>배포 시간 단축</li>
                     </ul>
                 </div>
             </div>
@@ -778,7 +786,7 @@
 
                     <strong style="color: #667eea; display: block; margin: 12px 0 8px 0;">핵심 설계</strong>
                     • Entity-DTO 분리로 결합도 최소화<br>
-                    • CQRS: 조회/수정 서비스 분리<br>
+                    • 조회/수정 서비스 분리 (SRP)<br>
                     • 의존성 역전: 외부 API → Adapter
                 </div>
             </div>
@@ -812,6 +820,158 @@
                     • 영화인: 5,532명<br>
                     • 관계: 6,398건
                 </div>
+            </div>
+        </div>
+
+        <!-- 페이지 구분 -->
+        <div class="page-break"></div>
+
+        <!-- 프로젝트 2: 코딩테스트 도우미 -->
+        <div class="section">
+            <h2>🤖 프로젝트 2: 코딩테스트 도우미</h2>
+            <div class="project-summary">
+                <strong>개발 기간:</strong> 2025.12 ~ 2026.01 |
+                <strong>개발 인원:</strong> 1인 |
+                <strong>기술:</strong> Spring Boot, Spring AI, H2, Function Calling
+            </div>
+            <p style="margin: 8px 0; line-height: 1.6; font-size: 9pt;">
+                GitHub 레포지토리에 저장된 코딩테스트 풀이를 동기화하고, AI Function Calling으로 문제 분석, 힌트 제공, 코드 리뷰 기능을 제공.
+            </p>
+        </div>
+
+        <!-- 주요 기능 -->
+        <div class="section">
+            <h2>⚙️ 주요 기능</h2>
+            <div class="feature-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div class="feature-item" style="background: #f8fafc; padding: 10px; border-radius: 6px; border-left: 3px solid #1e40af;">
+                    <strong style="color: #1e40af; font-size: 9pt;">📊 풀이 이력 관리</strong>
+                    <p style="font-size: 8.5pt; margin: 4px 0 0 0; color: #4b5563;">
+                        GitHub 레포에서 풀이 동기화<br>
+                        사이트별/난이도별 통계 제공
+                    </p>
+                </div>
+                <div class="feature-item" style="background: #f8fafc; padding: 10px; border-radius: 6px; border-left: 3px solid #1e40af;">
+                    <strong style="color: #1e40af; font-size: 9pt;">🎯 약점 분석</strong>
+                    <p style="font-size: 8.5pt; margin: 4px 0 0 0; color: #4b5563;">
+                        카테고리별 성공률 분석<br>
+                        어려워하는 유형 자동 파악
+                    </p>
+                </div>
+                <div class="feature-item" style="background: #f8fafc; padding: 10px; border-radius: 6px; border-left: 3px solid #1e40af;">
+                    <strong style="color: #1e40af; font-size: 9pt;">🔍 코드 리뷰</strong>
+                    <p style="font-size: 8.5pt; margin: 4px 0 0 0; color: #4b5563;">
+                        제출한 코드 분석 및 피드백<br>
+                        시간/공간 복잡도 개선점 제안
+                    </p>
+                </div>
+                <div class="feature-item" style="background: #f8fafc; padding: 10px; border-radius: 6px; border-left: 3px solid #1e40af;">
+                    <strong style="color: #1e40af; font-size: 9pt;">📝 복습 추천</strong>
+                    <p style="font-size: 8.5pt; margin: 4px 0 0 0; color: #4b5563;">
+                        틀린 문제, 오래된 문제 우선 추천<br>
+                        유사 문제 연결
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 기술적 특징 -->
+        <div class="section">
+            <h2>🛠️ 기술적 특징</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div style="background: #ecfdf5; padding: 10px; border-radius: 6px;">
+                    <strong style="color: #047857; font-size: 9pt;">Spring AI Function Calling</strong>
+                    <p style="font-size: 8.5pt; margin: 4px 0 0 0; color: #4b5563;">
+                        AI가 대화 맥락을 파악하여 6개 함수 중 필요한 것만 호출
+                    </p>
+                </div>
+                <div style="background: #ecfdf5; padding: 10px; border-radius: 6px;">
+                    <strong style="color: #047857; font-size: 9pt;">엔티티 설계</strong>
+                    <p style="font-size: 8.5pt; margin: 4px 0 0 0; color: #4b5563;">
+                        변경 주기/소유권 기준 3개 분리<br>
+                        Problem / Submission / ProblemUserData
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 코딩테스트 문제 해결 
+        <div class="section">
+            <h2>🔧 핵심 문제 해결 경험</h2>
+            ...
+        </div>-->
+
+
+        <!-- 프로젝트 2: 코딩테스트 도우미 
+        <div class="section">
+            <h2>🤖 프로젝트 2: 코딩테스트 도우미</h2>
+
+            <div class="project-summary">
+                <strong>개발 기간:</strong> 2025.12 ~ 2026.01 |
+                <strong>개발 인원:</strong> 1인 <br>
+                <strong>기술:</strong> Spring Boot, Spring AI, H2, Function Calling
+            </div>
+
+            <p style="margin: 12px 0; line-height: 1.8; font-size: 10pt;">
+                GitHub 레포지토리에 저장된 코딩테스트 풀이를 동기화하고,<br>
+                AI Function Calling으로 문제 분석, 힌트 제공, 코드 리뷰 기능을 제공하는 서비스입니다.
+            </p>
+        </div>-->
+
+
+            
+
+
+
+        <!-- 코딩테스트 문제 해결 -->
+        <div class="section">
+            <h2>🔧 핵심 문제 해결 경험</h2>
+
+            <div class="problem-card">
+                <h4>1. AI가 모든 질문을 예측할 수 없는 문제</h4>
+                <div class="problem-section">
+                    <strong>🎯 문제</strong>
+                    "힌트 줘", "코드 리뷰해줘", "비슷한 문제 있어?" 등 다양한 질문에 대응 필요
+                </div>
+                <div class="problem-section">
+                    <strong>💡 선택지</strong>
+                    버튼 UI → 자유 질문 불가 / 모든 데이터 프롬프트 → 토큰 낭비 / Function Calling 선택
+                </div>
+                <div class="problem-section">
+                    <strong>✅ 해결</strong>
+                    6개 함수 설계: 문제조회, 제출이력, 코드분석, 힌트제공, 유사문제, 통계
+                </div>
+                <div class="problem-result">✅ 결과: AI가 맥락 파악 후 필요한 함수만 호출, 자연스러운 대화</div>
+            </div>
+
+            <div class="problem-card">
+                <h4>2. 엔티티 분리 - 변경 주기/소유권이 다른 데이터 혼재</h4>
+                <div class="problem-section">
+                    <strong>🎯 문제</strong>
+                    문제 정보 + 제출 이력 + 사용자 메모가 한 엔티티에 혼재, 관리 어려움
+                </div>
+                <div class="problem-section">
+                    <strong>💡 분석</strong>
+                    문제 정보(불변, 시스템) / 제출 이력(동기화, 시스템) / 사용자 메모(빈번, 사용자)
+                </div>
+                <div class="problem-section">
+                    <strong>✅ 해결</strong>
+                    3개 엔티티 분리: Problem(불변) / Submission(시스템) / ProblemUserData(사용자)
+                </div>
+                <div class="problem-result">✅ 결과: 변경 영향 범위 최소화, 독립적 관리</div>
+            </div>
+
+            <div class="problem-card">
+                <h4>3. N+1 쿼리 문제</h4>
+                <div class="problem-section">
+                    <strong>🎯 문제</strong>
+                    카테고리별 통계 조회 시 각 Problem마다 Submission 추가 조회
+                </div>
+                <div class="problem-section">
+                    <strong>✅ 해결</strong>
+                    Fetch Join으로 Problem + Submission 한 번에 조회
+                </div>
+                <div class="problem-result">✅ 결과: 쿼리 367개 → 1개 (99% 감소)</div>
             </div>
         </div>
 
